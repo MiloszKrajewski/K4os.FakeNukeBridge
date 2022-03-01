@@ -15,7 +15,7 @@ namespace K4os.FakeNukeBridge.Test
 					"## 1.2.2",
 				});
 			Assert.NotNull(notes);
-			Assert.Equal(new Version(1, 2, 3), notes.Version);
+			Assert.Equal("1.2.3", notes.FileVersion);
 			Assert.Equal("beta.7", notes.Tag);
 			Assert.Equal(0, notes.Changes.Count);
 		}
@@ -30,7 +30,7 @@ namespace K4os.FakeNukeBridge.Test
 					"## 1.2.2",
 				});
 			Assert.NotNull(notes);
-			Assert.Equal(new Version(1, 2, 3), notes.Version);
+			Assert.Equal("1.2.3", notes.FileVersion);
 			Assert.Equal("beta.7", notes.Tag);
 			Assert.Equal(0, notes.Changes.Count);
 		}
@@ -45,7 +45,7 @@ namespace K4os.FakeNukeBridge.Test
 					"## 1.2.2",
 				});
 			Assert.NotNull(notes);
-			Assert.Equal(new Version(1, 2, 3), notes.Version);
+			Assert.Equal("1.2.3", notes.FileVersion);
 			Assert.Equal("beta.7", notes.Tag);
 			Assert.Equal(1, notes.Changes.Count);
 		}
@@ -61,7 +61,7 @@ namespace K4os.FakeNukeBridge.Test
 					"## 1.2.2",
 				});
 			Assert.NotNull(notes);
-			Assert.Equal(new Version(1, 2, 3), notes.Version);
+			Assert.Equal("1.2.3", notes.FileVersion);
 			Assert.Equal("beta.7", notes.Tag);
 			Assert.Equal(1, notes.Changes.Count);
 		}
@@ -71,7 +71,7 @@ namespace K4os.FakeNukeBridge.Test
 		{
 			var notes = ReleaseNotes.Parse("## 1.2.3-beta.7 (2022/02/22)");
 			Assert.NotNull(notes);
-			Assert.Equal(new Version(1, 2, 3), notes.Version);
+			Assert.Equal("1.2.3", notes.FileVersion);
 			Assert.Equal("beta.7", notes.Tag);
 		}
 
@@ -80,8 +80,18 @@ namespace K4os.FakeNukeBridge.Test
 		{
 			var notes = ReleaseNotes.Parse("## 1.2.3");
 			Assert.NotNull(notes);
-			Assert.Equal(new Version(1, 2, 3), notes.Version);
+			Assert.Equal("1.2.3", notes.FileVersion);
 			Assert.Null(notes.Tag);
+		}
+		
+		[Fact]
+		public void NugetVersionIsIsFileVersionAndTag()
+		{
+			var notes = ReleaseNotes.Parse("## 1.2.3-beta.4");
+			Assert.NotNull(notes);
+			Assert.Equal("1.2.3", notes.FileVersion);
+			Assert.Equal("beta.4", notes.Tag);
+			Assert.Equal("1.2.3-beta.4", notes.NugetVersion);
 		}
 	}
 }
