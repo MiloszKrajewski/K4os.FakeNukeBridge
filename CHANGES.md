@@ -1,3 +1,6 @@
+## 0.0.3 (2022/03/01)
+* FIXED: fixed from project metadata
+
 ## 0.0.2 (2022/03/01)
 * REMOVED: Version property on ReleaseNotes
 * ADDED: FileVersion and NugetVersion to ReleaseNotes
