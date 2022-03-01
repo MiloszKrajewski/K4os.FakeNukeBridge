@@ -11,9 +11,13 @@ namespace K4os.FakeNukeBridge;
 /// </summary>
 public class ReleaseNotes
 {
-	/// <summary>Version.</summary>
-	public Version Version { get; private set; } = new(0, 0, 0);
-	
+	/// <summary>File version (short, ie: 1.2.3).</summary>
+	public string FileVersion { get; private set; } = "0.0.0";
+
+	/// <summary>Nuget version (long, ie: 1.2.3-beta.3).</summary>
+	public string NugetVersion => 
+		string.IsNullOrWhiteSpace(Tag) ? FileVersion : $"{FileVersion}-{Tag}";
+
 	/// <summary>Version tag.</summary>
 	public string? Tag { get; private set; }
 
@@ -70,7 +74,7 @@ public class ReleaseNotes
 		var m = HeaderPattern.Match(line);
 		if (!m.Success) return false;
 
-		result.Version = new Version(m.Groups["version"].Value);
+		result.FileVersion = m.Groups["version"].Value;
 		var tag = m.Groups["tag"].Value;
 		result.Tag = string.IsNullOrWhiteSpace(tag) ? null : tag;
 
