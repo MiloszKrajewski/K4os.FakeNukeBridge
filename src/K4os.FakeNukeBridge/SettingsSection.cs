@@ -20,10 +20,10 @@ internal class SettingsSection: ISettingsSection
 	/// </summary>
 	/// <param name="key">Key name.</param>
 	public string? this[string key] { get => TryGet(key); set => TrySet(key, value); }
-	
+
 	/// <summary>Keys in section.</summary>
 	public IReadOnlyList<string> Keys => _keys;
-	
+
 	/// <summary>Return <c>true</c> if section has any keys.</summary>
 	public bool HasKeys => _keys.Count > 0;
 
@@ -36,13 +36,11 @@ internal class SettingsSection: ISettingsSection
 
 	private void TrySet(string key, string? value)
 	{
-		if (_items.TryAdd(key, value))
+		if (!_items.ContainsKey(key))
 		{
 			_keys.Add(key);
 		}
-		else
-		{
-			_items[key] = value;
-		}
+
+		_items[key] = value;
 	}
 }

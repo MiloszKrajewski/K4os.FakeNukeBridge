@@ -1,3 +1,6 @@
+## 0.0.4 (2022/03/02)
+* CHANGED: targets .NET Standard 2.0
+
 ## 0.0.3 (2022/03/01)
 * FIXED: fixed project metadata
 
