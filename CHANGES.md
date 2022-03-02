@@ -1,5 +1,5 @@
 ## 0.0.3 (2022/03/01)
-* FIXED: fixed from project metadata
+* FIXED: fixed project metadata
 
 ## 0.0.2 (2022/03/01)
 * REMOVED: Version property on ReleaseNotes
