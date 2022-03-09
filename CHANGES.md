@@ -1,3 +1,7 @@
+## 0.0.5 (2022/03/09)
+* ADDED: StringIndent & StringTemplate
+* CHANGED: targets .NET Standard 2.1
+
 ## 0.0.4 (2022/03/02)
 * CHANGED: targets .NET Standard 2.0
 
