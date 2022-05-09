@@ -1,3 +1,6 @@
+## 0.0.7 (2022/05/09)
+* ADDED: SettingsFile.Empty
+
 ## 0.0.6 (2022/05/09)
 * ADDED: PathFinder class to scan repositories for files
 * CHANGED: Added SettingsFile.TryParseFile to load optional settings
