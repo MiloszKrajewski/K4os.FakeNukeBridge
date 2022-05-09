@@ -1,3 +1,7 @@
+## 0.0.6 (2022/05/09)
+* ADDED: PathFinder class to scan repositories for files
+* CHANGED: Added SettingsFile.TryParseFile to load optional settings
+
 ## 0.0.5 (2022/03/09)
 * ADDED: StringIndent & StringTemplate
 * CHANGED: targets .NET Standard 2.1

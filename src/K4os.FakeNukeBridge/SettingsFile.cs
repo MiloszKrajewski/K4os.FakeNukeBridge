@@ -105,6 +105,14 @@ public class SettingsFile
 	/// <param name="filename">File name.</param>
 	/// <returns>Parsed settings.</returns>
 	/// <exception cref="ArgumentException">Thrown when settings cannot be parsed.</exception>
-	public static SettingsFile ParseFile(string filename) =>
-		Parse(File.ReadAllLines(filename));
+	public static SettingsFile ParseFile(string filename) => 
+		TryParseFile(filename) ?? 
+		throw new FileNotFoundException($"File {filename} does not exist");
+
+	/// <summary>Parses settings from provided file.</summary>
+	/// <param name="filename">File name.</param>
+	/// <returns>Parsed settings.</returns>
+	/// <exception cref="ArgumentException">Thrown when settings cannot be parsed.</exception>
+	public static SettingsFile? TryParseFile(string filename) => 
+		!File.Exists(filename) ? null : Parse(File.ReadAllLines(filename));
 }
